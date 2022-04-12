@@ -1,0 +1,12 @@
+#enquiry,
+#exampleEmail,
+#fullname,
+#subject,
+#address {
+  padding: 0%;
+  border-bottom: 1px solid #fefbf3;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0%;
+}

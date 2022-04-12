@@ -1,0 +1,34 @@
+.body-attendee {
+  height: 1000px;
+  width: 100%;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+}
+@media (min-width: 770px) {
+  .body-attendee::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .body-attendee::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  .body-attendee::-webkit-scrollbar-button {
+    height: 10px;
+  }
+
+  .body-attendee::-webkit-scrollbar-thumb {
+    background: #79b4b7;
+    border-radius: 10px;
+  }
+
+  .body-attendee::-webkit-scrollbar-thumb:hover {
+    background: #489da2;
+  }
+}
+.body-attendee .container {
+  padding: 0% 2% 0% 0%;
+  margin: 0% 0% 0% 0%;
+}

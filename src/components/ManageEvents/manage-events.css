@@ -1,0 +1,27 @@
+.main-manage-event {
+  margin-top: 10%;
+  margin-left: 20%;
+}
+.main-manage-event #container {
+  color: aliceblue;
+}
+
+@media only screen and (max-width: 425px) {
+  .main-manage-event{
+    margin-top: 15%;
+    margin-left: 15%;
+  }
+  .main-manage-event #table-row {
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+  }
+  .main-manage-event #thead-row {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+  }
+  .main-manage-event #container {
+    justify-content: center;
+  }
+}

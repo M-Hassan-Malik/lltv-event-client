@@ -1,0 +1,36 @@
+.carousel-item > img {
+  height: 500px;
+  border-radius: 5px;
+  border-bottom: 5px solid #79b4b7;
+  border-top: 5px solid #79b4b7;
+}
+@media only screen and (max-width: 425px) {
+  .carousel-item > img {
+    height: 200px;
+    border-radius: 5px;
+    border-bottom: 2px solid #79b4b7;
+    border-top: 2px solid #79b4b7;
+  }
+  #archives {
+    margin-top: 20%;
+    font-size: 50px;
+  }
+}
+
+#archives {
+  background-color: #fefbf3;
+  text-align: center;
+  padding-top: 20px;
+  font-family: Montserrat;
+  color: black;
+  background-color: #fefbf3;
+  font-size: 50px;
+}
+.carousel-item {
+  margin-left: 11.5%;
+  width: 77%;
+  background-color: #fefbf3;
+}
+#root {
+  background-color: #fefbf3;
+}

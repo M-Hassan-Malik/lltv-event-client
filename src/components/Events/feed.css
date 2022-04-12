@@ -1,0 +1,41 @@
+.feed-card {
+  border: none;
+  border-radius: 5px;
+  margin: 2%;
+  width: 46%;
+  cursor: pointer;
+  background-color: #79b4b7;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.feed-card:hover {
+  border: 5px outset   #79b4b7;
+  transition: all 0.1s ease-in-out;
+  transform: translateY(-5px);
+}
+
+.feed-card #text-div {
+  display: flex;
+}
+.feed-card strong,
+.feed-card h4 {
+  color: #fefbf3;
+  text-align: center;
+}
+.feed-card strong {
+  width: 100%;
+}
+.feed-card h4:hover {
+  color: black;
+}
+@media only screen and (max-width: 700px) {
+  .row-box {
+    display: flex;
+    flex-direction: column;
+  }
+  .feed-card {
+    width: 100%;
+  }
+}

@@ -1,0 +1,16 @@
+#event-info-p-tag p,
+#event-info-p-tag span,
+#event-info-p-tag h1,
+#event-info-p-tag h2,
+#event-info-p-tag h3,
+#event-info-p-tag h4,
+#event-info-p-tag h5,
+#event-info-p-tag h6,
+#event-info-p-tag strong,
+#event-info-p-tag i,
+#event-info-p-tag u,
+#event-info-p-tag b {
+  text-align: center;
+  color: black !important;
+  border-radius: 5px;
+}

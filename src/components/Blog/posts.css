@@ -1,0 +1,30 @@
+.main-blog {
+  margin-left: 18%;
+  margin-top: 10%;
+}
+.table {
+  text-align: center;
+  max-width: 80%;
+}
+#container {
+  display: flex;
+}
+#thead-row {
+  background-color: #00adb5;
+}
+
+@media only screen and (max-width: 425px) {
+  .main-blog #table-row {
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+  }
+  .main-blog #thead-row {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+  }
+  .main-blog #container{
+    justify-content: center;
+  }
+}

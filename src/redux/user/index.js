@@ -1,0 +1,9 @@
+export const actionTypes = {
+    USER: "USER",
+    MANAGE_EVENT: "MANAGE_EVENT",
+    EVENT: "EVENT",
+    PUBLISHING_PAGE: "PUBLISHING_PAGE",
+    BOOKING_VIEW_EDIT: "BOOKING_VIEW_EDIT",
+    SHOW_TICKET: "SHOW_TICKET",
+   
+}

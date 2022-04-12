@@ -1,0 +1,16 @@
+#link{
+    color: black;
+
+}
+#link:hover{
+    color: #79B4B7;
+    
+}
+#Nav-a-tag{
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 10%;   
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #FEFBF3;
+}

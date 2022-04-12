@@ -1,0 +1,133 @@
+.cards-main #cards-image {
+  width: 100%;
+  height: 400px;
+}
+
+.cards-main #img-text {
+  font-family: Monserrat;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cards-main .img-div {
+  position: relative;
+  text-align: center;
+  color: #fefbf3;
+}
+
+@media only screen and (max-width: 425px) {
+  .cards-main #cards-image {
+    height: 150px;
+  }
+  .cards-main #img-text {
+    font-size: 12px;
+  }
+}
+
+/*  */
+.card-main-parent {
+  display: flex;
+  justify-content: center;
+  background: #fefbf3;
+  width: 80%;
+  margin-left: 10%;
+}
+#pricing-heading {
+  margin-top: 5%;
+  font-family: Montserrat;
+  color: black;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.card-main {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+  padding: 5%;
+  width: max-content;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.card-main:hover {
+  border-top: 5px solid black;
+  border-bottom: 10px solid black;
+  border-right: 5px solid black;
+  border-left: 5px solid black;
+  transition: border-top 0.2s, border-bottom 0.4s, border-right 0.2s,
+    border-left 0.2s;
+  transition: all 0.1s ease-in-out;
+  transform: translateY(-10px);
+}
+#h1 {
+  padding-bottom: 1%;
+  text-decoration: black;
+}
+#buy {
+  background-color: powderblue;
+  border-radius: 10px;
+  width: fit-content;
+  font-weight: bolder;
+}
+
+@media only screen and (max-width: 425px) {
+  .card-main-parent {
+    margin-top: 20%;
+    margin-bottom: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-main {
+    width: 92%;
+  }
+}
+/*  */
+.pricing-container-2 {
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
+}
+
+/* Section-last-sponsors */
+.sponsors {
+  padding-top: 4%;
+  margin-top: 4%;
+}
+
+#sponsor-main #text {
+  display: flex;
+  color: black;
+  margin-left: 5%;
+  margin-right: 2%;
+}
+#sponsor-main {
+  display: flex;
+  margin: 0%;
+  padding: 0%;
+}
+#sponsor-trailling {
+  text-align: left;
+  margin: 0%;
+  padding: 0%;
+}
+@media only screen and (max-width: 425px) {
+  #sponsor-main {
+    display: flex;
+    flex-direction: column;
+    margin: 0%;
+    padding: 0%;
+  }
+  #sponsor-main {
+    display: flex;
+    flex-direction: column;
+    margin: 0%;
+    padding: 0%;
+  }
+  #sponsor-trailling {
+    text-align: center;
+  }
+}

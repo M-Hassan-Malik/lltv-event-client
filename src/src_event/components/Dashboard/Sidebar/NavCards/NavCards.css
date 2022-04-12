@@ -1,0 +1,33 @@
+.nav__card {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+
+@media (max-width: 425px) {
+  .nav__card {
+    flex-direction: column;
+    padding: 2px;
+  }
+}
+
+.nav__img img {
+  width: 60px;
+  color: #222831;
+}
+
+.nav__img {
+  padding-right: 10px;
+}
+.nav__desc a {
+  color: #222831;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+
+}

@@ -1,0 +1,22 @@
+.wrapper-class {
+  padding-top: 1rem;
+  max-width: 70%;
+}
+.editor-class {
+  background-color: black;
+  
+  padding: 1rem;
+  border-radius: 10px;
+}
+.toolbar-class {
+  border: 1px solid #ccc;
+}
+.rdw-dropdownoption-default{
+  color: black;
+}
+.rc-time-picker-panel-select{
+ background-color: grey;
+}
+.rc-time-picker-panel-select-option-selected{
+  color: #79B4B7;
+}

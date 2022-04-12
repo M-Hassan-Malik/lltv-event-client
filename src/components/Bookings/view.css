@@ -1,0 +1,25 @@
+.main{
+    display: flex;
+    justify-content: start;
+    margin-left: 10rem;
+    padding: 2%;
+}
+.details-div{
+    justify-content: start;
+    margin: 5rem;
+}
+#view-td{
+    font-size: large;
+    
+}
+#view-th{
+    padding-right: 3rem;
+    font-size: large;
+    
+}
+#view-tr{
+    padding-bottom: 5rem;
+}
+#buttons{
+    margin-bottom: 3rem;
+}

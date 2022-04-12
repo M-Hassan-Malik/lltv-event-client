@@ -1,0 +1,86 @@
+.main-contactForm #contact-image {
+  width: 100%;
+  height: 400px;
+}
+
+.main-contactForm #img-text {
+  font-family: Monserrat;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-contactForm .img-div {
+  position: relative;
+  text-align: center;
+  color: #fefbf3;
+}
+
+@media only screen and (max-width: 425px) {
+  .main-contactForm #contact-image {
+    height: 150px;
+  }
+  .main-contactForm #img-text {
+    font-size: 12px;
+  }
+}
+#contact-heading{
+  margin-top: 5%;
+  font-family: Montserrat;
+  color: black;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/*  */
+
+.container-main {
+  margin-top: 3%;
+  text-align: center;
+  padding: 50px;
+}
+
+#form {
+  background-color: #79b4b7;
+  padding: 5%;
+  border-radius: 10px;
+  text-align: start;
+}
+
+#contactus-form {
+  color: black;
+  font-family: Montserrat;
+}
+
+#contact-label {
+  color: black;
+}
+.contact-input {
+  border: 1px solid black;
+  color: black;
+}
+.contact-input::placeholder {
+  color: white;
+}
+
+
+#contact-button {
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #FEFBF3;
+  background: #79b4b7;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline:none;
+}
+#contact-button:hover {
+  background-color: #79b4b7;
+  box-shadow: 0px 15px 20px rgb(118, 167, 167);
+  color: #FEFBF3;
+  transform: translateY(-7px);
+}

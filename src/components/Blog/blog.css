@@ -1,0 +1,28 @@
+.main-blog{
+    margin-left: 18%;
+    margin-Top: 10%;
+}
+.wrapper-class {
+    padding-top: 1rem;
+    max-width: 70%;
+  }
+  .editor-class {
+    background-color: black;
+    border: 3px solid black;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .toolbar-class {
+    border: 1px solid #ccc;
+  }
+  
+  .title{
+   background-color: black;
+   max-width: 70%;
+  }
+  
+  .subtitle{
+   background-color: black;
+   max-width: 70%;
+  }
+  

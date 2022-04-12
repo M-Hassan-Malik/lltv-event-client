@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#handleID {
+  text-align: left;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 20px 8px 20px;
+  background: #79b4b7;
+  color: #fefbf3;
+  font-weight: 600;
+}
+#handleID:hover {
+  background: #79b4b7;
+  color: #fefbf3;
+  transition: 300ms;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 410px) {
+  #handleID {
+    size: 10px;
+  }
+}

@@ -1,0 +1,32 @@
+#lable {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+#strong {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+
+#card-expandable-title {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: black;
+  background: #79b4b7;
+  border: none;
+  width: 70%;
+}
+@media only screen and (max-width: 425px) {
+  #card-expandable-title {
+    margin-left: 0px !important;
+    width: 97%;
+  }
+}
+
+#card-expandable-subtitle {
+  background-color: #79b4b7;
+  border: none;
+  border-radius: 5px;
+  background: none;
+}

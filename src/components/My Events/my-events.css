@@ -1,0 +1,27 @@
+.my-event-card {
+  width: 46%;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #79b4b7;
+  margin: 1%;
+}
+.my-event-card:hover {
+  border: 5px outset   #79b4b7;
+  transition: all 0.1s ease-in-out;
+  transform: translateY(-5px);
+}
+@media (max-width: 425px) {
+  .my-event-card {
+    width: 100%;
+  }
+}
+
+
+.my-event-card strong,
+.my-event-card span,
+.my-event-card h4 {
+  color: #fefbf3;
+}
+.my-event-card strong {
+  font-weight: bold;
+}

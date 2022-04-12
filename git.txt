@@ -1,0 +1,9 @@
+echo "# lltv-events-front" >> README.md
+git init
+git add README.md
+git commit -m "6pm"
+git branch -M main
+
+git remote add origin https://github.com/M-Hassan-Malik/lltv-event-client.git
+git branch -M main
+git push -u origin main

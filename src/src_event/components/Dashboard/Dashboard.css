@@ -1,0 +1,28 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.dashboard {
+  background-color: #272a3d;
+  padding-bottom: 33px;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+}
+.dashboard__body {
+  display: flex;
+  width: 100%;
+}
+@media only screen and (max-width: 425px) {
+  .perfect-scrollbar-off {
+    width: 122%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .perfect-scrollbar-off {
+    width: 122%;
+  }
+}
+.desc{
+  color:black;
+}
