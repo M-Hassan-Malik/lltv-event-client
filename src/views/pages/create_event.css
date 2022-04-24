@@ -8,6 +8,22 @@
   padding: 1rem;
   border-radius: 10px;
 }
+
+
+select.form-control{
+  color: white !important;
+  font-weight: bolder;
+}
+
+.form-group > input::-webkit-input-placeholder { 
+  color: white;
+}
+
+.form-group > input{ 
+  font-weight: bolder;
+  color: white !important;
+}
+
 .toolbar-class {
   border: 1px solid #ccc;
 }

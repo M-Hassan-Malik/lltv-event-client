@@ -1,6 +1,7 @@
 import React from "react";
 import { Col } from "reactstrap";
-import imga from "../../../assets/img/bg3.jpg";
+import bg3 from "../../../assets/img/bg3.jpg";
+import bg4 from "../../../assets/img/bg4.jpg";
 import "./blog.css";
 import { ServerURL, ClientURL } from "../../../url.js";
 import { useEffect, useState } from "react";
@@ -81,7 +82,7 @@ const BlogPage = (props) => {
                 htmlArray.push(
                   <div className="row">
                     <Col className="box">
-                      <img id="image" src={imga} />
+                      <img id="image" src={bg3} />
                       <h3 style={{ color: "black" }}>
                         {blog[start] !== undefined ? blog[start].title : ""}
                       </h3>
@@ -101,7 +102,7 @@ const BlogPage = (props) => {
                     <p hidden>{start++}</p>
                     {blog[start] !== undefined && (
                       <Col className="box">
-                        <img id="image" src={imga} />
+                        <img id="image" src={bg4} />
                         <h3 style={{ color: "black" }}>
                           {blog[start] !== undefined ? blog[start].title : ""}
                         </h3>
@@ -115,7 +116,7 @@ const BlogPage = (props) => {
                     <p hidden>{start++}</p>
                     {blog[start] !== undefined && (
                       <Col className="box">
-                        <img id="image" src={imga} />
+                        <img id="image" src={bg3} />
                         <h3 style={{ color: "black" }}>
                           {blog[start] !== undefined ? blog[start].title : ""}
                         </h3>

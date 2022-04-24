@@ -51,9 +51,9 @@ function HomeWhiteLabel(props) {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} org_id={event.organizer_id} />
       <HeroSection />
-      <InfoSec title={"Primary Description"} description={event.description} />
+      <InfoSec title={"Primary Description"} description={event.description} start_date={event.start_date} />
       <Carousel org_id={event.organizer_id} heading={""} />
-      <Cards hide={true} />
+      {/* <Cards hide={true} /> */}
       <Booking />
       <Services />
       <EventInfo moreinfo={event.moreinfo} />

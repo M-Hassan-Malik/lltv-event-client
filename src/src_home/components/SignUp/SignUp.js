@@ -57,33 +57,33 @@ export default function SignUp() {
   const handleSignup = (e) => {
     e.preventDefault();
     alert("User Registered")
-    // if (signupConstrains() === false) {
-    //   alert(errorShower);
-    //   setRerender(!true);
-    // } else {
-    //   let data = {
-    //     user_type: "attendee",
-    //     fname: fname,
-    //     lname: lname,
-    //     email: email,
-    //     password: password,
-    //     confirm_pasword: confirm_pasword,
-    //     address: address,
-    //     dob: dob,
-    //     postal: postal,
-    //     contact: contact,
-    //     company: company,
-    //     country: country,
-    //     agree: agree,
-    //     created_at: new Date(),
-    //     updated_at: new Date(),
-    //     month: new Date().getMonth() + 1, // start from 0 to 11
-    //   };
+    if (signupConstrains() === false) {
+      alert(errorShower);
+      setRerender(!true);
+    } else {
+      let data = {
+        user_type: "attendee",
+        fname: fname,
+        lname: lname,
+        email: email,
+        password: password,
+        confirm_pasword: confirm_pasword,
+        address: address,
+        dob: dob,
+        postal: postal,
+        contact: contact,
+        company: company,
+        country: country,
+        agree: agree,
+        created_at: new Date(),
+        updated_at: new Date(),
+        month: new Date().getMonth() + 1, // start from 0 to 11
+      };
 
-    //   Axios.post(`${ServerURL}/api/logging/registration`, {
-    //     data: JSON.stringify(data),
-    //   }).then((res) => history.push("/"));
-    // }
+      Axios.post(`${ServerURL}/api/logging/registration`, {
+        data: JSON.stringify(data),
+      }).then((res) => history.push("/"));
+    }
   };
 
   const handleChanges = (e) => {

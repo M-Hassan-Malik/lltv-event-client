@@ -160,8 +160,10 @@ const Navbar = (props) => {
                   Contact Us
                 </NavLinks>
               </NavItem>
+
               <NavItem>
-                <NavLinks>
+                {user.user_type === "" ? (
+                  <NavLinks>
                   <Link
                     style={{ color: "inherit", textDecoration: "inherit" }}
                     to="/signup"
@@ -169,6 +171,9 @@ const Navbar = (props) => {
                     Sign Up
                   </Link>
                 </NavLinks>
+                ) : (
+                  <p></p>
+                )}
               </NavItem>
             </NavMenu>
             <NavBtn>

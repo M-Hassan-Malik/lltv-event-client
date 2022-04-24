@@ -13,6 +13,7 @@ import draftToHtml from "draftjs-to-html";
 
 import TimePicker from "rc-time-picker";
 import "rc-time-picker/assets/index.css";
+import Swal from "sweetalert2";
 
 import { useHistory } from "react-router-dom";
 
@@ -28,6 +29,7 @@ import {
   Label,
 } from "reactstrap";
 import { ServerURL } from "../../url";
+import { ItalicOutlined } from "@ant-design/icons";
 
 const CreateEvent = () => {
   const MANAGE_EVENT = useSelector((state) => state.userReducer.MANAGE_EVENT);
@@ -120,7 +122,6 @@ const CreateEvent = () => {
   }, []);
 
   const handleNextPreviousPage = (e) => {
-    
     e.preventDefault();
     const { name } = e.target;
     let pageNumber = page;
@@ -144,14 +145,19 @@ const CreateEvent = () => {
               setPage2Enable(true);
               setPage(2);
             } else {
-              alert(
-                "Before proceeding... Fill fields on this page first, please!"
-              );
+              Swal.fire({
+                title: "Before proceeding...",
+                text: "Fill fields on this page first, please!",
+                icon: "info", 
+              })
+
             }
           } catch (e) {
-            alert(
-              "Before proceeding... Fill fields on this page first, please!"
-            );
+            Swal.fire({
+              title: "Before proceeding...",
+              text: "Fill fields on this page first, please!",
+              icon: "error", 
+            })
           }
           break;
         case 2:
@@ -160,14 +166,18 @@ const CreateEvent = () => {
               setPage3Enable(true);
               setPage(3);
             } else {
-              alert(
-                "Before proceeding... Fill fields on this page first, please!"
-              );
+              Swal.fire({
+                title: "Before proceeding...",
+                text: "Fill fields on this page first, please!",
+                icon: "info", 
+              })
             }
           } catch (e) {
-            alert(
-              "Before proceeding... Fill fields on this page first, please!"
-            );
+            Swal.fire({
+              title: "Before proceeding...",
+              text: "Fill fields on this page first, please!",
+              icon: "error", 
+            })
           }
           break;
         case 3:
@@ -183,14 +193,18 @@ const CreateEvent = () => {
               setPage(4);
               setSubmitButton(false);
             } else {
-              alert(
-                "Before proceeding... Fill fields on this page first, please!"
-              );
+              Swal.fire({
+                title: "Before proceeding...",
+                text: "Fill fields on this page first, please!",
+                icon: "info", 
+              })
             }
           } catch (e) {
-            alert(
-              "Before proceeding... Fill fields on this page first, please!"
-            );
+            Swal.fire({
+              title: "Before proceeding...",
+              text: "Fill fields on this page first, please!",
+              icon: "error", 
+            });
           }
           break;
       }
@@ -213,7 +227,6 @@ const CreateEvent = () => {
   };
 
   const handleNextPage = (e) => {
-    
     e.preventDefault();
 
     const { name } = e.target;
@@ -242,14 +255,18 @@ const CreateEvent = () => {
               setPage2Enable(true);
               setPage(2);
             } else {
-              alert(
-                "Before proceeding... Fill fields on this page first, please!"
-              );
+              Swal.fire({
+                title: "Before proceeding...",
+                text: "Fill fields on this page first, please!",
+                icon: "info", 
+              })
             }
           } catch (e) {
-            alert(
-              "Before proceeding... Fill fields on this page first, please!"
-            );
+            Swal.fire({
+              title: "Before proceeding...",
+              text: "Fill fields on this page first, please!",
+              icon: "error", 
+            })
           }
         }
 
@@ -261,14 +278,18 @@ const CreateEvent = () => {
               setPage3Enable(true);
               setPage(3);
             } else {
-              alert(
-                "Before proceeding... Fill fields on this page first, please!"
-              );
+              Swal.fire({
+                title: "Before proceeding...",
+                text: "Fill fields on this page first, please!",
+                icon: "info", 
+              })
             }
           } catch (e) {
-            alert(
-              "Before proceeding... Fill fields on this page first, please!"
-            );
+            Swal.fire({
+              title: "Before proceeding...",
+              text: "Fill fields on this page first, please!",
+              icon: "error", 
+            })
           }
           break;
         }
@@ -281,14 +302,18 @@ const CreateEvent = () => {
               setPage(4);
               setSubmitButton(false);
             } else {
-              alert(
-                "Before proceeding... Fill fields on this page first, please!"
-              );
+              Swal.fire({
+                title: "Before proceeding...",
+                text: "Fill fields on this page first, please!",
+                icon: "info", 
+              })
             }
           } catch (e) {
-            alert(
-              "Before proceeding... Fill fields on this page first, please!"
-            );
+            Swal.fire({
+              title: "Before proceeding...",
+              text: "Fill fields on this page first, please!",
+              icon: "error", 
+            })
           }
         }
         break;
@@ -329,7 +354,10 @@ const CreateEvent = () => {
 
       Axios.post(`${ServerURL}/api/generate/genEvent`, data).then((res) => {
         if (res.data.result) {
-          alert("Event Created");
+          Swal.fire({
+            title: "Event Created",
+            icon: "success", 
+          })
           history.push("admin/dashboard");
           window.location.reload();
         }
@@ -359,11 +387,18 @@ const CreateEvent = () => {
 
       Axios.post(`${ServerURL}/api/generate/updateEvent`, data).then((res) => {
         if (res.data.result) {
-          alert("Event Updated");
+          Swal.fire({
+            title: "Event Updated!",
+            icon: "success", 
+          })
           history.push("admin/dashboard");
           window.location.reload();
         } else if (res.data.error) {
-          alert(res.data.error);
+          Swal.fire({
+            title: "Error",
+            text: "res.data.error",
+            icon: "error", 
+          })
         } else
           console.log("some other error at CreateEvent.js in update events");
       });
@@ -459,16 +494,29 @@ const CreateEvent = () => {
                 <FormGroup>
                   <Input
                     style={{ backgroundColor: "black" }}
-                    type="text"
+                    type="select"
                     name="category"
                     value={category}
-                    placeholder="Enter event category"
                     onChange={handleChanges}
-                  />
+                  >
+                    <option>--Category Type--</option>
+                    <option>Sports</option>
+                    <option>Games</option>
+                    <option>Olympics</option>
+                    <option>Music</option>
+                    <option>Arts</option>
+                    <option>Fashion</option>
+                    <option>Food_Drink</option>
+                    <option>Festivals_Fairs</option>
+                    <option>Kids_Family</option>
+                    <option>Others</option>
+                  </Input>
                 </FormGroup>
                 <FormGroup>
                   <Input
-                    style={{ backgroundColor: "black" }}
+                    style={{
+                      backgroundColor: "black"
+                    }}
                     type="text"
                     name="title"
                     value={title}
@@ -477,12 +525,21 @@ const CreateEvent = () => {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <label>
-                    Event URL probabily be:
-                    https://lltv-events-front.netlify.app/{webURL}
+                  <label
+                    style={{
+                      color: "white",
+                      paddingLeft: "1rem",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Event URL probabily be: &nbsp;&nbsp;
+                    <u style={{ fontWeight: "500" }}>
+                      https://lltv-events-front.netlify.app/{webURL}
+                    </u>
                   </label>
                 </FormGroup>
-                <FormGroup>
+                    { (eventType !== "--Event Type--" && eventType !== "In-Person" )? (
+                      <FormGroup>
                   <Input
                     style={{ backgroundColor: "black" }}
                     type="select"
@@ -494,84 +551,95 @@ const CreateEvent = () => {
                     <option>Zoom</option>
                     <option>StreamYard</option>
                   </Input>
+                  
                 </FormGroup>
-                <FormGroup style={{ marginTop: "4%" }}>
-                  <Editor
-                    toolbar={{
-                      options: [
-                        "inline",
-                        "blockType",
-                        "fontSize",
-                        "fontFamily",
-                        "list",
-                        "textAlign",
-                        "link",
-                        "embedded",
-                        "emoji",
-                        "image",
-                        "remove",
-                        "history",
-                      ],
-                      inline: { inDropdown: true },
-                      list: { inDropdown: true },
-                      textAlign: { inDropdown: true },
-                      link: { inDropdown: true },
-                      history: { inDropdown: false },
-                    }}
-                    editorState={description}
-                    placeholder="Add Description"
-                    onEditorStateChange={setDescription}
-                    wrapperClassName="wrapper-class"
-                    editorClassName="editor-class"
-                    toolbarClassName="toolbar-class"
-                  />
+                    )
+                  :(
+                  <></>
+                  )
+                  }
 
-                  {console.log(
-                    "description->",
-                    draftToHtml(convertToRaw(description.getCurrentContent()))
-                  )}
-                  {/* {console.log(
+                {MANAGE_EVENT.organizer_id === "unmounted" ? (
+                  <>
+                    <FormGroup style={{ marginTop: "4%" }}>
+                      <Editor
+                        toolbar={{
+                          options: [
+                            "inline",
+                            "blockType",
+                            "fontSize",
+                            "fontFamily",
+                            "list",
+                            "textAlign",
+                            "link",
+                            "embedded",
+                            "emoji",
+                            "image",
+                            "remove",
+                            "history",
+                          ],
+                          inline: { inDropdown: true },
+                          list: { inDropdown: true },
+                          textAlign: { inDropdown: true },
+                          link: { inDropdown: true },
+                          history: { inDropdown: false },
+                        }}
+                        editorState={description}
+                        placeholder="Add Description"
+                        onEditorStateChange={setDescription}
+                        wrapperClassName="wrapper-class"
+                        editorClassName="editor-class"
+                        toolbarClassName="toolbar-class"
+                      />
+
+                      {console.log(
+                        "description->",
+                        draftToHtml(
+                          convertToRaw(description.getCurrentContent())
+                        )
+                      )}
+                      {/* {console.log(
                     "description->",
                     String(convertToRaw(description.getCurrentContent()).blocks[0].text)
                   )} */}
-                </FormGroup>
+                    </FormGroup>
 
-                <FormGroup style={{ marginTop: "4%" }}>
-                  <Editor
-                    toolbar={{
-                      options: [
-                        "inline",
-                        "blockType",
-                        "fontSize",
-                        "fontFamily",
-                        "list",
-                        "textAlign",
-                        "link",
-                        "embedded",
-                        "emoji",
-                        "image",
-                        "remove",
-                        "history",
-                      ],
-                      inline: { inDropdown: true },
-                      list: { inDropdown: true },
-                      textAlign: { inDropdown: true },
-                      link: { inDropdown: true },
-                      history: { inDropdown: false },
-                    }}
-                    editorState={moreinfo}
-                    placeholder="Why to attend"
-                    onEditorStateChange={setMoreinfo}
-                    wrapperClassName="wrapper-class"
-                    editorClassName="editor-class"
-                    toolbarClassName="toolbar-class"
-                  />
+                    <FormGroup style={{ marginTop: "4%" }}>
+                      <Editor
+                        toolbar={{
+                          options: [
+                            "inline",
+                            "blockType",
+                            "fontSize",
+                            "fontFamily",
+                            "list",
+                            "textAlign",
+                            "link",
+                            "embedded",
+                            "emoji",
+                            "image",
+                            "remove",
+                            "history",
+                          ],
+                          inline: { inDropdown: true },
+                          list: { inDropdown: true },
+                          textAlign: { inDropdown: true },
+                          link: { inDropdown: true },
+                          history: { inDropdown: false },
+                        }}
+                        editorState={moreinfo}
+                        placeholder="Why to attend"
+                        onEditorStateChange={setMoreinfo}
+                        wrapperClassName="wrapper-class"
+                        editorClassName="editor-class"
+                        toolbarClassName="toolbar-class"
+                      />
 
-                  {/* {console.log(
+                      {/* {console.log(
                     "editorState => ",
                     convertToRaw(moreinfo.getCurrentContent()).blocks[0].text
                   )} */}
-                  {/* <Input
+                      {/* <Input
                     style={{ backgroundColor: "black" }}
                     type="textarea"
                     name="description"
@@ -579,7 +647,11 @@ const CreateEvent = () => {
                     placeholder="Description"
                     onChange={handleChanges}
                   /> */}
-                </FormGroup>
+                    </FormGroup>
+                  </>
+                ) : (
+                  <p></p>
+                )}
               </>
             )}
             {/* page Date TIme */}

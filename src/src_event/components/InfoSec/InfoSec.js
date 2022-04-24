@@ -1,13 +1,17 @@
 import "./info.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import img from "../../../assets/img/bg14.jpg";
 import './info.css'
 
 const InfoSec = (props) => {
-	const { title, description } = props;
-
+	const { title, description,start_date } = props;
+	useEffect(() => {
+		
+		console.log(start_date);
+	  }, []);
 	return (
+		
 		<Row className="info-main" style={{ margin: "0px" }}>
 			<Col id="child1">
 				<Container
@@ -23,9 +27,9 @@ const InfoSec = (props) => {
 					}}
 				>
 					<h1 style={{ margin: "0%", fontSize: "150px", fontWeight: "bold" }}>
-						01
+					{start_date.toString().split("T")[0].split("-")[2]}
 					</h1>
-					<strong style={{ margin: "0%", fontSize: "40px" }}>Oct-2021</strong>
+					<strong style={{ margin: "0%", fontSize: "40px" }}>{start_date.toString().split("T")[0].split("-")[1]}-{start_date.toString().split("T")[0].split("-")[0]}</strong>
 				</Container>
 			</Col>
 			<Col id="child2">
