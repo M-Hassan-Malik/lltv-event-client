@@ -1,5 +1,5 @@
 import "./SignUp.css";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import Axios from "axios";
 import { ServerURL } from "../../../url";
@@ -10,6 +10,8 @@ export default function SignUp() {
   const history = useHistory();
   const options = useMemo(() => countryList().getData(), []);
 
+  const [verified, setVerified] = useState(false);
+  const [otpSession, setOtpSession] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
@@ -24,6 +26,15 @@ export default function SignUp() {
   const [agree, setAgree] = useState(false);
   const [render, setRerender] = useState(false);
   var errorShower = [];
+
+  useEffect(() => {
+    var code = sessionStorage.getItem("otpCode");
+    if (code) {
+      setOtpSession(code);
+    }
+    console.log(code);
+  });
+
 
   const signupConstrains = () => {
     let regix = new RegExp(
@@ -56,7 +67,7 @@ export default function SignUp() {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    alert("User Registered")
+    alert("User Registered");
     if (signupConstrains() === false) {
       alert(errorShower);
       setRerender(!true);
@@ -86,9 +97,30 @@ export default function SignUp() {
     }
   };
 
+  const handleVerification = (e) => {
+    e.preventDefault();
+    if (email.includes("@") === false) {
+      alert("Invalid email\n");
+    } else {
+      Axios.post(`${ServerURL}/api/logging/verify1`, {
+        email: email,
+      }).then((res) => {
+        if (res.data.result) {
+          alert(res.data.result.msg);
+          sessionStorage.setItem("otpCode", res.data.result.otp);
+        } else alert(res.data.error);
+      });
+    }
+  };
+
   const handleChanges = (e) => {
     const { value, name } = e.target;
     switch (name) {
+      case "otp":
+        if (otpSession === value) {
+          setVerified(true);
+        }
+        break;
       case "fname":
         setFname(value);
         break;
@@ -131,151 +163,211 @@ export default function SignUp() {
 
   return (
     <div>
-      <div className="sign">
-        <h1>
-          Sign Up <span> Form</span>
-        </h1>
-
-        <form className="form__control__sign">
-          <div className="input__control__sign">
+      {verified === false ? (
+        <div
+          className="otp"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+            position: "absolute",
+            top: "40%",
+            bottom: "40%",
+            left: "20%",
+            right: "20%",
+          }}
+        >
+          <h1>🔒</h1>
+          <h2>
+            Verification <span> Form</span>
+          </h2>
+          <form className="otp-form">
             <div
+              className="input__control__sign"
               style={{
-                width: "49%",
+                minWidth: "300px",
               }}
             >
               <input
                 onChange={handleChanges}
-                type="text"
-                name="fname"
-                placeholder="First Name"
+                name="email"
+                type="email"
+                placeholder="Email"
               />
             </div>
-            <div
-              style={{
-                width: "49%",
-              }}
-            >
-              <input
-                onChange={handleChanges}
-                name="lname"
-                type="text"
-                placeholder="Last Name"
-              />
-            </div>
-          </div>
-          <div className="input__control__sign">
-            <input
-              onChange={handleChanges}
-              name="email"
-              type="email"
-              placeholder="Email"
-            />
-          </div>
-          <div className="input__control__sign">
-            <input
-              onChange={handleChanges}
-              name="password"
-              type="password"
-              placeholder="Password"
-            />
-            <input
-              onChange={handleChanges}
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm Password"
-            />
-          </div>
-          <div style={{ marginBottom: "10px" }}>
-            <Select
-              options={options}
-              value={country}
-              onChange={(value) => setCountry(value)}
-            />
-          </div>
-          <div className="input__control__sign">
-            <input
-              onChange={handleChanges}
-              name="address"
-              type="address"
-              placeholder="Address"
-            />
-          </div>
-          <div className="input__control__sign">
-            <div
-              style={{
-                width: "49%",
-              }}
-            >
-              <input
-                onChange={handleChanges}
-                name="dob"
-                type="date"
-                placeholder="Date of Birth"
-              />
-            </div>
-            <div
-              style={{
-                width: "49%",
-              }}
-            >
-              <label>
-                <input
-                  onChange={handleChanges}
-                  name="postal_code"
-                  type="number"
-                  placeholder="Postal Code"
-                />
-              </label>
-            </div>
-          </div>
-          <div className="input__control__sign">
-            <input
-              onChange={handleChanges}
-              name="contact"
-              type="number"
-              placeholder="Contact Number"
-            />
-          </div>
-          <div className="input__control__sign">
-            <input
-              onChange={handleChanges}
-              name="company"
-              type="text"
-              placeholder="Company Name"
-            />
-          </div>
-          <div className="checkbox__form">
-            <input
-              name="agree"
-              onChange={handleChanges}
-              type="checkbox"
-            ></input>
-
-            <span
-              style={{
-                paddingLeft: "10px",
-              }}
-            >
-              Agree to all terms and Conditions?
-            </span>
-          </div>
-          <div>
             <button
-              onClick={handleSignup}
+              onClick={handleVerification}
               type="submit"
               style={{ backgroundColor: "#01bf71" }}
             >
-              Sign Up
+              Send OTP
             </button>
-          </div>
-          <div>
-            <p>
-              Have an account with us?
-              <a href="/signin"> Login here </a>
-            </p>
-          </div>
-        </form>
-      </div>
+            {otpSession !== "" ? (
+              <div
+                className="input__control__sign"
+                style={{
+                  minWidth: "300px",
+                }}
+              >
+                <input
+                  onChange={handleChanges}
+                  type="number"
+                  name="otp"
+                  placeholder="For E.g: 29237"
+                />
+              </div>
+            ) : ""}
+          </form>
+        </div>
+      ) : (
+        <div className="sign">
+          <h1>
+            Sign Up <span> Form</span>
+          </h1>
+
+          <form className="form__control__sign">
+            <div className="input__control__sign">
+              <div
+                style={{
+                  width: "49%",
+                }}
+              >
+                <input
+                  onChange={handleChanges}
+                  type="text"
+                  name="fname"
+                  placeholder="First Name"
+                />
+              </div>
+              <div
+                style={{
+                  width: "49%",
+                }}
+              >
+                <input
+                  onChange={handleChanges}
+                  name="lname"
+                  type="text"
+                  placeholder="Last Name"
+                />
+              </div>
+            </div>
+            <div className="input__control__sign">
+              <input
+                onChange={handleChanges}
+                name="email"
+                type="email"
+                placeholder="Email"
+              />
+            </div>
+            <div className="input__control__sign">
+              <input
+                onChange={handleChanges}
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
+              <input
+                onChange={handleChanges}
+                name="confirmPassword"
+                type="password"
+                placeholder="Confirm Password"
+              />
+            </div>
+            <div style={{ marginBottom: "10px" }}>
+              <Select
+                options={options}
+                value={country}
+                onChange={(value) => setCountry(value)}
+              />
+            </div>
+            <div className="input__control__sign">
+              <input
+                onChange={handleChanges}
+                name="address"
+                type="address"
+                placeholder="Address"
+              />
+            </div>
+            <div className="input__control__sign">
+              <div
+                style={{
+                  width: "49%",
+                }}
+              >
+                <input
+                  onChange={handleChanges}
+                  name="dob"
+                  type="date"
+                  placeholder="Date of Birth"
+                />
+              </div>
+              <div
+                style={{
+                  width: "49%",
+                }}
+              >
+                <label>
+                  <input
+                    onChange={handleChanges}
+                    name="postal_code"
+                    type="number"
+                    placeholder="Postal Code"
+                  />
+                </label>
+              </div>
+            </div>
+            <div className="input__control__sign">
+              <input
+                onChange={handleChanges}
+                name="contact"
+                type="number"
+                placeholder="Contact Number"
+              />
+            </div>
+            <div className="input__control__sign">
+              <input
+                onChange={handleChanges}
+                name="company"
+                type="text"
+                placeholder="Company Name"
+              />
+            </div>
+            <div className="checkbox__form">
+              <input
+                name="agree"
+                onChange={handleChanges}
+                type="checkbox"
+              ></input>
+
+              <span
+                style={{
+                  paddingLeft: "10px",
+                }}
+              >
+                Agree to all terms and Conditions?
+              </span>
+            </div>
+            <div>
+              <button
+                onClick={handleSignup}
+                type="submit"
+                style={{ backgroundColor: "#01bf71" }}
+              >
+                Sign Up
+              </button>
+            </div>
+            <div>
+              <p>
+                Have an account with us?
+                <a href="/signin"> Login here </a>
+              </p>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 }
