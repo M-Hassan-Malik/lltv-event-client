@@ -9,7 +9,6 @@ import countryList from "react-select-country-list";
 export default function SignUp() {
   const history = useHistory();
   const options = useMemo(() => countryList().getData(), []);
-
   const [verified, setVerified] = useState(false);
   const [otpSession, setOtpSession] = useState("");
   const [fname, setFname] = useState("");
@@ -34,7 +33,6 @@ export default function SignUp() {
     }
     console.log(code);
   });
-
 
   const signupConstrains = () => {
     let regix = new RegExp(
@@ -102,14 +100,16 @@ export default function SignUp() {
     if (email.includes("@") === false) {
       alert("Invalid email\n");
     } else {
-      Axios.post(`${ServerURL}/api/logging/verify1`, {
+      Axios.post(`${ServerURL}/api/logging/verify`, {
         email: email,
-      }).then((res) => {
-        if (res.data.result) {
-          alert(res.data.result.msg);
-          sessionStorage.setItem("otpCode", res.data.result.otp);
-        } else alert(res.data.error);
-      });
+      })
+        .then((res) => {
+          if (res.data.result) {
+            alert(res.data.result.msg);
+            sessionStorage.setItem("otpCode", res.data.result.otp);
+          } else alert(res.data.error);
+        })
+        .catch((e) => alert(e));
     }
   };
 
@@ -117,7 +117,8 @@ export default function SignUp() {
     const { value, name } = e.target;
     switch (name) {
       case "otp":
-        if (otpSession === value) {
+        console.log(value);
+        if (value !== "" && otpSession === value) {
           setVerified(true);
         }
         break;
@@ -200,25 +201,29 @@ export default function SignUp() {
             <button
               onClick={handleVerification}
               type="submit"
-              style={{ backgroundColor: "#01bf71" }}
+              style={{
+                backgroundColor: "#01bf71",
+                margin: "1px 0px 20px 0px",
+                padding: "5px",
+                borderRadius: "5px",
+              }}
             >
               Send OTP
             </button>
-            {otpSession !== "" ? (
-              <div
-                className="input__control__sign"
-                style={{
-                  minWidth: "300px",
-                }}
-              >
-                <input
-                  onChange={handleChanges}
-                  type="number"
-                  name="otp"
-                  placeholder="For E.g: 29237"
-                />
-              </div>
-            ) : ""}
+
+            <div
+              className="input__control__sign"
+              style={{
+                minWidth: "300px",
+              }}
+            >
+              <input
+                onChange={handleChanges}
+                type="number"
+                name="otp"
+                placeholder="For E.g: 29237"
+              />
+            </div>
           </form>
         </div>
       ) : (
