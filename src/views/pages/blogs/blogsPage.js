@@ -3,7 +3,7 @@ import { Col } from "reactstrap";
 import bg3 from "../../../assets/img/bg3.jpg";
 import bg4 from "../../../assets/img/bg4.jpg";
 import "./blog.css";
-import { ServerURL, ClientURL } from "../../../url.js";
+import { ServerURL } from "../../../url.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import img from "../../../assets/img/bg1.jpg";

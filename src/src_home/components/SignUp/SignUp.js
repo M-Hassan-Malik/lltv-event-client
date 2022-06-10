@@ -26,14 +26,6 @@ export default function SignUp() {
   const [render, setRerender] = useState(false);
   var errorShower = [];
 
-  useEffect(() => {
-    var code = sessionStorage.getItem("otpCode");
-    if (code) {
-      setOtpSession(code);
-    }
-    console.log(code);
-  });
-
   const signupConstrains = () => {
     let regix = new RegExp(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
@@ -106,7 +98,8 @@ export default function SignUp() {
         .then((res) => {
           if (res.data.result) {
             alert(res.data.result.msg);
-            sessionStorage.setItem("otpCode", res.data.result.otp);
+            setOtpSession(res.data.result.otp);
+            console.log("OTP: ",res.data.result.otp)
           } else alert(res.data.error);
         })
         .catch((e) => alert(e));
@@ -117,8 +110,9 @@ export default function SignUp() {
     const { value, name } = e.target;
     switch (name) {
       case "otp":
-        console.log(value);
-        if (value !== "" && otpSession === value) {
+        console.log("value: ", value);
+        console.log("otpSession: ", otpSession);
+        if (value != "" && otpSession == value) {
           setVerified(true);
         }
         break;
@@ -164,7 +158,7 @@ export default function SignUp() {
 
   return (
     <div>
-      {verified === false ? (
+      {verified == false ? (
         <div
           className="otp"
           style={{
